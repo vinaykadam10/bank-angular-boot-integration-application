@@ -55,4 +55,11 @@ public class CustomerProducerController {
 		
 		
 	}
+	@PutMapping("/customers/{id}")
+	public Customer updateCustomer(@RequestBody Customer customer, @PathVariable Integer id) {
+		Customer cu= repo.save(customer);
+		cu.setPort(Integer.parseInt(env.getProperty("local.server.port")));
+		return cu;
+	
+	}	
 }
